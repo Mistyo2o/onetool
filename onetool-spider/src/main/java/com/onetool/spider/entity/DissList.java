@@ -10,6 +10,7 @@ public class DissList {
     private String diss_name;
     private String diss_cover;
     private String song_cnt;
+    private String tid;
 
     public String getDiss_name() {
         return diss_name;
@@ -35,4 +36,11 @@ public class DissList {
         this.song_cnt = song_cnt;
     }
 
+    public String getTid() {
+        return tid;
+    }
+
+    public void setTid(String tid) {
+        this.tid = tid;
+    }
 }

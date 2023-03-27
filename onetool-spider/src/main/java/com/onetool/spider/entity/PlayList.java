@@ -33,6 +33,10 @@ public class PlayList implements Serializable {
      */
     private String songCnt;
     /**
+     * 歌单id
+     */
+    private String tid;
+    /**
      * 创建人(qq号)
      */
     private String cUser;

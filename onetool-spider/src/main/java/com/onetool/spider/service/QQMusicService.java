@@ -1,5 +1,6 @@
 package com.onetool.spider.service;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.onetool.common.config.RestTemplateConfig;
 import com.onetool.common.exception.oneToolException;
@@ -10,6 +11,8 @@ import com.onetool.spider.config.QQReqHeadersConfig;
 import com.onetool.spider.dao.PlayListRepository;
 import com.onetool.spider.entity.DissList;
 import com.onetool.spider.entity.PlayList;
+import com.onetool.spider.entity.SongListParams;
+import com.onetool.spider.utils.QqEncryptUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -51,13 +54,15 @@ public class QQMusicService {
     private RestTemplateConfig restTemplateConfig;
     @Value("${songplayurl}")
     private String songPlayUrl;
+    @Value("${songlist}")
+    private String songList;
 
 
     /**
+     * @param qq qq账号
+     * @return ApiResult<String>
      * @author: zh
      * @date: 2023/3/27 10:16
-     * @param  qq qq账号
-     * @return ApiResult<String>
      * @description: 获取用户歌单列表 并保存
      */
     @Transactional
@@ -104,23 +109,37 @@ public class QQMusicService {
     }
 
     /**
+     * @return ApiResult<String>
      * @author: zh
      * @date: 2023/3/27 10:17
-     * @return ApiResult<String>
      * @description: 获取歌单中歌曲数据 并保存
      */
-    public ApiResult<String> spiderSong(){
+    public ApiResult<String> spiderSong(String qq) {
+        //根据qq 查询歌单
+        List<PlayList> byCUserAndDel = playListRepository.findBycUserAndDel(qq, 0);
+        long l = System.currentTimeMillis();
+        for (PlayList playList : byCUserAndDel) {
+            //除去背景音乐歌单 TODO 需要请求单独接口
+            //生成请求参数
+            SongListParams params = SongListParams.init(playList.getTid(), 99);
+            //生成加密sign
+            String sign = QqEncryptUtils.getSign(JSON.toJSONString(params));
+            //拼接请求参数
+            //处理响应数据
+            //保存歌曲信息
+        }
         return ResponseData.success();
     }
 
     private void batchInsetPlayList(List<DissList> list, String qq) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO play_list(play_name, play_cover, song_cnt, c_user, c_time, del) VALUES ");
+        sb.append("INSERT INTO play_list(play_name, play_cover, song_cnt, tid, c_user, c_time, del) VALUES ");
         for (int i = 0; i < list.size(); i++) {
             sb.append("(").append("'").append(list.get(i).getDiss_name()).append("'")
                     .append(",").append("'").append(list.get(i).getDiss_cover()).append("'")
                     .append(",").append("'").append(list.get(i).getSong_cnt()).append("'")
+                    .append(",").append("'").append(list.get(i).getTid()).append("'")
                     .append(",").append("'").append(qq).append("'")
                     .append(",").append("'").append(dateFormat.format(new Date())).append("'")
                     .append(",").append("'").append(0).append("'").append(")");
