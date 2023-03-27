@@ -1,0 +1,16 @@
+server:
+  port: 8089
+spring:
+  datasource:
+    url: jdbc:mysql://116.62.50.80:3306/o3olisten?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 25later
+  jpa:
+    database: mysql
+    database-platform:  org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+  cloud:
+    nacos:
+      server-addr: 116.62.50.80:8848
+  application:
+    name: onetool-spider

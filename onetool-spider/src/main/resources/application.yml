@@ -1,0 +1,25 @@
+# youtube data api v3配置
+youtube:
+  #api密钥
+  apiKey: key=AIzaSyDd4fAM6gf5U8LtYYvGG50OvHV-iPUI6Ro
+  #开放api请求地址
+  apiUrl: https://youtube.googleapis.com/youtube/v3/
+  #视频地址前缀
+  videoUrl: https://www.youtube.com/watch?v=
+minio:
+  url: http://116.62.50.80:9000
+  accessKey: sh86FzKIyKU7aevF
+  secretKey: VQnIAnlmLjFmPbkE6PY3qwZOYaZ5tLmG
+ytdlp:
+  # 文件输出路径
+  oPath: C:\Users\25486\Music\
+#qq音乐歌单链接
+songplayurl: https://c.y.qq.com/rsc/fcgi-bin/fcg_user_created_diss
+qqmusicheader:
+  acceptEncoding: gzip, deflate, br
+  connection: keep-alive
+  cookie: pgv_pvid=2924660092; eas_sid=Y1w6e4T9K3V3D4f9h0x0Y6m4Z2; RK=SSWFxVLF+H; ptcz=157112832d71496f9df171a47b4aa82419cd98c5721ec047f3fca0aa1193fbbc; fqm_pvqid=e78fc5bf-87d1-4d92-905e-ea09661b1b3c; LW_uid=n1B6L5B8V4S9u6W0U3g362o8p5; tvfe_boss_uuid=ae374053535ea7fe; o_cookie=2548635937; pac_uid=1_2548635937; clickNums=1; iip=0; logTrackKey=8a2314d4fa4846cb82c72357f35eb879; livelink_pvid=7963778048; ts_uid=4896515200; euin=ow4PNeCi7KEi7z**; tmeLoginType=2; Qs_lvt_323937=1677816960%2C1677817175; Qs_pv_323937=1480651633433466400%2C2897248148266537000; LW_sid=W1v6t7r8F3c7b150t0b9j6M0M3; ts_refer=www.google.com/; psrf_qqaccess_token=F5ACBD35397D7C663FE967B1FC6D7A5F; psrf_qqrefresh_token=FFC18A5D074D621B51928FB24FC17367; psrf_qqopenid=6F8D18189BF3F3D193DF376123ECEBEB; wxrefresh_token=; psrf_qqunionid=D45169722F0E617175B0611D714021AB; wxopenid=; wxunionid=; uin_cookie=2548635937; ied_qq=2548635937; fqm_sessionid=0aae8ed4-ed92-4b5f-9c2b-3e47382c707a; pgv_info=ssid=s8840640256; ts_last=y.qq.com/n/ryqq/profile/like/song; _qpsvr_localtk=0.09734802390842434; login_type=1; qm_keyst=Q_H_L_5NtuaTj7wC_-rgUR32XXP2HwgiXDQ0FeGDNf8B-zSzA5_RozMn-1hOQ; uin=2548635937; qm_keyst=Q_H_L_5NtuaTj7wC_-rgUR32XXP2HwgiXDQ0FeGDNf8B-zSzA5_RozMn-1hOQ; psrf_musickey_createtime=1679822032; qqmusic_key=Q_H_L_5NtuaTj7wC_-rgUR32XXP2HwgiXDQ0FeGDNf8B-zSzA5_RozMn-1hOQ; psrf_access_token_expiresAt=1687598032
+  userAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.51
+  accept: application/json
+  referer: https://y.qq.com/
+  origin: https://y.qq.com
