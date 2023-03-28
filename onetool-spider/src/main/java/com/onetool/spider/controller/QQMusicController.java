@@ -5,6 +5,8 @@ import com.onetool.spider.service.QQMusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 
 /**
  * @author: zh
@@ -30,5 +32,11 @@ public class QQMusicController {
     @ResponseBody
     public ApiResult<String> loadSongPlay(@PathVariable("qq") String qq){
        return qqMusicService.spiderSongPlay(qq);
+    }
+
+    @GetMapping("/v1/{qq}")
+    @ResponseBody
+    public ApiResult<String> song(@PathVariable("qq") String qq) throws IOException {
+        return qqMusicService.spiderSong(qq);
     }
 }
