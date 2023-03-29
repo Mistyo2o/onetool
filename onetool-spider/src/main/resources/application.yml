@@ -1,18 +1,18 @@
 # youtube data api v3配置
 youtube:
   #api密钥
-  apiKey: key=AIzaSyDd4fAM6gf5U8LtYYvGG50OvHV-iPUI6Ro
+  apiKey:
   #开放api请求地址
-  apiUrl: https://youtube.googleapis.com/youtube/v3/
+  apiUrl:
   #视频地址前缀
-  videoUrl: https://www.youtube.com/watch?v=
+  videoUrl:
 minio:
-  url: http://116.62.50.80:9000
-  accessKey: sh86FzKIyKU7aevF
-  secretKey: VQnIAnlmLjFmPbkE6PY3qwZOYaZ5tLmG
+  url:
+  accessKey:
+  secretKey:
 ytdlp:
   # 文件输出路径
-  oPath: C:\Users\25486\Music\
+  oPath: 
 #qq音乐歌单链接
 songplayurl: https://c.y.qq.com/rsc/fcgi-bin/fcg_user_created_diss
 #qq音乐歌曲列表
@@ -20,7 +20,7 @@ songlist: https://u.y.qq.com/cgi-bin/musics.fcg
 qqmusicheader:
   acceptEncoding: gzip, deflate, br
   connection: keep-alive
-  cookie: 
+  cookie:
   userAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.51
   accept: application/json
   referer: https://y.qq.com/
