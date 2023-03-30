@@ -1,16 +1,33 @@
 package com.onetool.spider.entity;
 
+import lombok.Data;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
 /**
  * @author: zh
  * @date: 2023/3/24 9:21
  * @description:
  */
-public class Song {
+
+@Entity
+@Table(name = "song")
+@Data
+public class Song implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //自增
+    private String id;
 
     /**
      * 歌曲名称
      */
     private String name;
+    /**
+     * 歌曲id
+     */
+    private String songId;
     /**
      * 歌曲副标题
      */
@@ -35,60 +52,17 @@ public class Song {
      * youtube视频地址
      */
     private String youtubeVideoUrl;
+    /**
+     * minio预览地址
+     */
+    private String previewUrl;
+    /**
+     * 创建时间
+     */
+    private String cTime;
+    /**
+     * 是否删除
+     */
+    private int del;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSubTitle() {
-        return subTitle;
-    }
-
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(String album) {
-        this.album = album;
-    }
-
-    public String getPlayId() {
-        return playId;
-    }
-
-    public void setPlayId(String playId) {
-        this.playId = playId;
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq;
-    }
-
-    public String getYoutubeVideoUrl() {
-        return youtubeVideoUrl;
-    }
-
-    public void setYoutubeVideoUrl(String youtubeVideoUrl) {
-        this.youtubeVideoUrl = youtubeVideoUrl;
-    }
 }

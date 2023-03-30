@@ -4,6 +4,7 @@ import com.onetool.spider.entity.PlayList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,4 +24,8 @@ public interface PlayListRepository extends JpaRepository<PlayList, Long> {
     @Modifying
     @Query("update PlayList set del = 1 where cUser =?1")
     void upDateDelBycUser(String cUser);
+
+    @Modifying
+    @Query("update PlayList set del = 1 where tid in ?1")
+    void upDateDelByTIds(List<String> list);
 }
