@@ -62,6 +62,13 @@
             <version>1.2.83</version>
         </dependency>
 
+        <!--用mp3文件和读取/操作 ID3 标签（ID3v1 和 ID3v2.2 到 ID3v2.4）的 java 库-->
+        <dependency>
+            <groupId>com.mpatric</groupId>
+            <artifactId>mp3agic</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
 <!--        <dependency>-->
 <!--            <groupId>us.codecraft</groupId>-->
 <!--            <artifactId>webmagic-core</artifactId>-->

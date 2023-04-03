@@ -1,5 +1,7 @@
 package com.onetool.spider.service;
 
+import com.mpatric.mp3agic.ID3v1;
+import com.mpatric.mp3agic.Mp3File;
 import io.minio.*;
 import io.minio.http.Method;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +27,8 @@ public class MinIoFileService {
 
     @Autowired
     private MinioClient minioClient;
-    @Value("${ytdlp.oPath}")
-    private String ytDlpOutPath;
+    @Value("${ytdlp.musicPath}")
+    private String musicPath;
 
 
 
@@ -60,7 +62,7 @@ public class MinIoFileService {
 
 
     public void upload() throws IOException {
-        Stream<Path> walk = Files.walk(Paths.get(ytDlpOutPath));
+        Stream<Path> walk = Files.walk(Paths.get(musicPath), 1);
         //获取目录下所有.mp3文件
         walk.map(Path::toString)
                 .filter(f -> f.endsWith(".mp3"))

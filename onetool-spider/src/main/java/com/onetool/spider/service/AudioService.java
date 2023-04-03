@@ -1,17 +1,25 @@
 package com.onetool.spider.service;
 
+import com.mpatric.mp3agic.*;
 import com.onetool.spider.common.YtDlpEnum;
 import com.onetool.spider.dao.SongRepository;
 import com.onetool.spider.entity.Song;
 import com.onetool.spider.utils.BashUtils;
 
+import io.minio.PutObjectArgs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.MessageFormat;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * @author: zh
@@ -24,6 +32,8 @@ public class AudioService {
 
     @Value("${ytdlp.oPath}")
     private String ytDlpOutPath;
+    @Value("${ytdlp.musicPath}")
+    private String musicPath;
     @Autowired
     private YouTubeDataApiService youTubeDataApiService;
     @Autowired
@@ -48,6 +58,9 @@ public class AudioService {
         //清空文件夹
         delFile();
         for (Song song : search) {
+            if (StringUtils.hasText(song.getPreviewUrl())){
+                continue;
+            }
             //保存路径 /歌名+作者
             String oPath = ytDlpOutPath + song.getName() + song.getAuthor();
             String videoUrl = MessageFormat.format(value, song.getYoutubeVideoUrl(), oPath);
@@ -57,7 +70,7 @@ public class AudioService {
         //下载完成之后 上传文件至minio
         minIoFileService.upload();
         //获取文件预览地址 更新数据
-        for (Song song : songList) {
+        for (Song song : search) {
             String previewUrl = minIoFileService.getFilePreviewUrl("music", song.getName() + song.getAuthor() + ".mp3");
             song.setPreviewUrl(previewUrl);
             songRepository.save(song);
@@ -65,14 +78,19 @@ public class AudioService {
     }
 
 
-    private void delFile() {
-        File file = new File(ytDlpOutPath);
-        if (file.exists()) {
-            File[] files = file.listFiles();
-            assert files != null;
-            for (File f : files) {
-                boolean delete = f.delete();
-            }
-        }
+    private void delFile() throws IOException {
+        Stream<Path> walk = Files.walk(Paths.get(musicPath), 1);
+        //获取目录下所有.mp3文件
+        walk.map(Path::toString)
+                .filter(f -> f.endsWith(".mp3"))
+                .forEach(path -> {
+                    try {
+                        //创建文件对象 获取文件名称
+                        File file = new File(path);
+                        boolean delete = file.delete();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
     }
 }

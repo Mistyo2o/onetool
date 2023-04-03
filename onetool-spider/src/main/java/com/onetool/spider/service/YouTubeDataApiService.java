@@ -5,11 +5,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.onetool.common.config.RestTemplateConfig;
 import com.onetool.spider.common.YouTubeDataApiCommon;
 import com.onetool.spider.common.YouTubeDataApiEnum;
+import com.onetool.spider.dao.SongRepository;
 import com.onetool.spider.entity.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -32,6 +34,8 @@ public class YouTubeDataApiService {
     private RestTemplateConfig restTemplateConfig;
     @Value("${youtube.videoUrl}")
     private String videoUrl;
+    @Autowired
+    private SongRepository songRepository;
 
     /**
      * @param songList 搜索内容
@@ -45,6 +49,9 @@ public class YouTubeDataApiService {
         Map<String, Object> apiParamsMap = new HashMap<>();
         apiParamsMap.put("part", "snippet");
         for (Song song : songList) {
+            if (StringUtils.hasText(song.getYoutubeVideoUrl())){
+                continue;
+            }
             String name = song.getName();
             String author = song.getAuthor();
             apiParamsMap.put("q", name + author);
@@ -59,6 +66,7 @@ public class YouTubeDataApiService {
             JSONObject idObj = JSONObject.parseObject(JSONObject.toJSONString(item.get("id")));
             String videoUrl = this.videoUrl + idObj.get("videoId").toString();
             song.setYoutubeVideoUrl(videoUrl);
+            songRepository.save(song);
         }
         return songList;
     }
