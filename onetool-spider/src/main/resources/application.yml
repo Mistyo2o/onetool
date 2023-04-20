@@ -1,15 +1,15 @@
 # youtube data api v3配置
 youtube:
   #api密钥
-  apiKey: key=AIzaSyCKN2nZVWhrxrc35CWfq7qNATfpZjyxgEY
+  apiKey:
   #开放api请求地址
-  apiUrl: https://youtube.googleapis.com/youtube/v3/
+  apiUrl:
   #视频地址前缀
-  videoUrl: https://www.youtube.com/watch?v=
+  videoUrl:
 minio:
-  url: http://116.62.50.80:9000
-  accessKey: sh86FzKIyKU7aevF
-  secretKey: VQnIAnlmLjFmPbkE6PY3qwZOYaZ5tLmG
+  url:
+  accessKey:
+  secretKey: 
 ytdlp:
   # 文件输出路径
   oPath: C:\Users\25486\Music\dest\
