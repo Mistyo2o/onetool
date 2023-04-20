@@ -9,7 +9,7 @@ youtube:
 minio:
   url:
   accessKey:
-  secretKey: 
+  secretKey:
 ytdlp:
   # 文件输出路径
   oPath: C:\Users\25486\Music\dest\

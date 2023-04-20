@@ -11,6 +11,6 @@ spring:
     show-sql: true
   cloud:
     nacos:
-      server-addr: 116.62.50.80:8848
+      server-addr: 
   application:
     name: onetool-wxplat
