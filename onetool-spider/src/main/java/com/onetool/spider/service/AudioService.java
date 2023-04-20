@@ -52,25 +52,25 @@ public class AudioService {
      */
     public void youTubeVideo(List<Song> songList) throws Exception {
         //根据关键词搜索出的视频id集合 并拼接为视频播放地址返回
-        List<Song> search = youTubeDataApiService.search(songList);
-        //使用ffmpeg + yt-dlp 解析地址 并下载音频文件
-        String value = YtDlpEnum.AUDIO_FORMAT_MP3.getValue();
-        //清空文件夹
-        delFile();
-        for (Song song : search) {
-            if (StringUtils.hasText(song.getPreviewUrl())){
-                continue;
-            }
-            //保存路径 /歌名+作者
-            String oPath = ytDlpOutPath + song.getName() + song.getAuthor();
-            String videoUrl = MessageFormat.format(value, song.getYoutubeVideoUrl(), oPath);
-            //执行yt-dlp命令提取音频数据
-            BashUtils.execCommand(videoUrl, "");
-        }
+//        List<Song> search = youTubeDataApiService.search(songList);
+//        //使用ffmpeg + yt-dlp 解析地址 并下载音频文件
+//        String value = YtDlpEnum.AUDIO_FORMAT_MP3.getValue();
+//        //清空文件夹
+//        delFile();
+//        for (Song song : search) {
+//            if (StringUtils.hasText(song.getPreviewUrl())){
+//                continue;
+//            }
+//            //保存路径 /歌名+作者
+//            String oPath = ytDlpOutPath + song.getName() + song.getAuthor();
+//            String videoUrl = MessageFormat.format(value, song.getYoutubeVideoUrl(), oPath);
+//            //执行yt-dlp命令提取音频数据
+//            BashUtils.execCommand(videoUrl, "");
+//        }
         //下载完成之后 上传文件至minio
         minIoFileService.upload();
         //获取文件预览地址 更新数据
-        for (Song song : search) {
+        for (Song song : songList) {
             String previewUrl = minIoFileService.getFilePreviewUrl("music", song.getName() + song.getAuthor() + ".mp3");
             song.setPreviewUrl(previewUrl);
             songRepository.save(song);

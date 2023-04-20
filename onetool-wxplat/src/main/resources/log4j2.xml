@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+
+<Configuration status="TRACE" monitorInterval="30">
+
+    <!-- 配置appender -->
+    <Appenders>
+        <Console name="consoleAppender" target="SYSTEM_ERR"></Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="consoleAppender"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

@@ -1,18 +1,19 @@
 # youtube data api v3配置
 youtube:
   #api密钥
-  apiKey:
+  apiKey: key=AIzaSyCKN2nZVWhrxrc35CWfq7qNATfpZjyxgEY
   #开放api请求地址
-  apiUrl:
+  apiUrl: https://youtube.googleapis.com/youtube/v3/
   #视频地址前缀
-  videoUrl:
+  videoUrl: https://www.youtube.com/watch?v=
 minio:
-  url:
-  accessKey:
-  secretKey:
+  url: http://116.62.50.80:9000
+  accessKey: sh86FzKIyKU7aevF
+  secretKey: VQnIAnlmLjFmPbkE6PY3qwZOYaZ5tLmG
 ytdlp:
   # 文件输出路径
-  oPath: 
+  oPath: C:\Users\25486\Music\dest\
+  musicPath: C:\Users\25486\Music\
 #qq音乐歌单链接
 songplayurl: https://c.y.qq.com/rsc/fcgi-bin/fcg_user_created_diss
 #qq音乐歌曲列表
@@ -20,7 +21,7 @@ songlist: https://u.y.qq.com/cgi-bin/musics.fcg
 qqmusicheader:
   acceptEncoding: gzip, deflate, br
   connection: keep-alive
-  cookie:
+  cookie: pgv_pvid=2924660092; eas_sid=Y1w6e4T9K3V3D4f9h0x0Y6m4Z2; RK=SSWFxVLF+H; ptcz=157112832d71496f9df171a47b4aa82419cd98c5721ec047f3fca0aa1193fbbc; fqm_pvqid=e78fc5bf-87d1-4d92-905e-ea09661b1b3c; LW_uid=n1B6L5B8V4S9u6W0U3g362o8p5; tvfe_boss_uuid=ae374053535ea7fe; o_cookie=2548635937; pac_uid=1_2548635937; clickNums=1; iip=0; logTrackKey=8a2314d4fa4846cb82c72357f35eb879; livelink_pvid=7963778048; ts_uid=4896515200; euin=ow4PNeCi7KEi7z**; tmeLoginType=2; Qs_lvt_323937=1677816960%2C1677817175; Qs_pv_323937=1480651633433466400%2C2897248148266537000; LW_sid=W1v6t7r8F3c7b150t0b9j6M0M3; uin_cookie=2548635937; ied_qq=2548635937; ts_refer=www.bing.com/; qm_keyst=Q_H_L_5NHYq5vX3719o2LZ_VFTVk8iRNcxrya4vp-Hbdmd1Iz6EgVF-XiwbLg; uin=2548635937; psrf_qqunionid=D45169722F0E617175B0611D714021AB; qqmusic_key=Q_H_L_5NHYq5vX3719o2LZ_VFTVk8iRNcxrya4vp-Hbdmd1Iz6EgVF-XiwbLg; psrf_access_token_expiresAt=1688024665; psrf_musickey_createtime=1680248665; wxrefresh_token=; psrf_qqopenid=6F8D18189BF3F3D193DF376123ECEBEB; qm_keyst=Q_H_L_5NHYq5vX3719o2LZ_VFTVk8iRNcxrya4vp-Hbdmd1Iz6EgVF-XiwbLg; wxopenid=; psrf_qqaccess_token=F5ACBD35397D7C663FE967B1FC6D7A5F; psrf_qqrefresh_token=FFC18A5D074D621B51928FB24FC17367; wxunionid=; fqm_sessionid=45f1420f-d7eb-402f-b875-c4c35320a014; pgv_info=ssid=s9796766040; ts_last=y.qq.com/n/ryqq/profile/like/song
   userAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.51
   accept: application/json
   referer: https://y.qq.com/
