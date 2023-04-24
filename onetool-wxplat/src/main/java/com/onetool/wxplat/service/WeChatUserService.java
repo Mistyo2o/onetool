@@ -4,6 +4,7 @@ package com.onetool.wxplat.service;
 import com.onetool.common.response.ApiResult;
 import com.onetool.common.response.ApiResultCode;
 import com.onetool.common.response.ResponseData;
+import com.onetool.wxplat.dao.WeChatUserQqRepository;
 import com.onetool.wxplat.dao.WeChatUserRepository;
 import com.onetool.wxplat.entity.WeChatUserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class WeChatUserService {
 
     @Autowired
     private WeChatUserRepository weChatUserRepository;
+    @Autowired
+    private WeChatUserQqRepository weChatUserQqRepository;
 
     /**
      * @param weChatUserInfo 微信小程序用户登录信息
