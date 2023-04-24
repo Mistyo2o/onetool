@@ -32,7 +32,7 @@ public class MusicController {
      */
     @GetMapping("/getPlay/{qq}")
     @ResponseBody
-    public ApiResult<List<Play>> playList(@PathVariable("qq") String qq) {
+    public ApiResult playList(@PathVariable("qq") String qq) {
         return musicService.playList(qq);
     }
 
@@ -47,7 +47,7 @@ public class MusicController {
      */
     @GetMapping("/getSong/{playId}")
     @ResponseBody
-    public ApiResult<List<Song>> songList(@PathVariable("playId") String playId) {
+    public ApiResult songList(@PathVariable("playId") String playId) {
         return musicService.songList(playId);
     }
 

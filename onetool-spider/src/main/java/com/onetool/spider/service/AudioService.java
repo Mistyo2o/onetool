@@ -68,7 +68,7 @@ public class AudioService {
 //            BashUtils.execCommand(videoUrl, "");
 //        }
         //下载完成之后 上传文件至minio
-        minIoFileService.upload();
+        //minIoFileService.upload();
         //获取文件预览地址 更新数据
         for (Song song : songList) {
             String previewUrl = minIoFileService.getFilePreviewUrl("music", song.getName() + song.getAuthor() + ".mp3");

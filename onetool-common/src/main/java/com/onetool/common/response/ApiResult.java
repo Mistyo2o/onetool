@@ -5,56 +5,35 @@ import java.io.Serializable;
 /**
  * @author: zh
  * @date: 2023/3/26 23:35
- * @description:
+ * @description: 响应数据格式
  */
-public class ApiResult<T> implements Serializable {
+public class ApiResult implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public int code;
 
-    private String message;
+    public String message;
 
-    private T data;
+    public Object data;
 
-    public void ApiResult() {
-        this.code = ApiResultCode.SUCCESS.code;
-        this.message = ApiResultCode.SUCCESS.message;
+    public ApiResult(int code, String message, Object data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
     }
-
-    public ApiResult<T> setCode(ApiResultCode apiResultCode) {
-        this.code = apiResultCode.code;
-        return this;
-    }
-
 
     public int getCode() {
         return code;
     }
 
-    public ApiResult<T> setCode(int code) {
-        this.code = code;
-        return this;
-    }
-
-    public String getMsg() {
+    public String getMessage() {
         return message;
     }
 
-    public ApiResult<T> setMsg(String msg) {
-        this.message = msg;
-        return this;
-    }
-
-    public T getData() {
+    public Object getData() {
         return data;
     }
-
-    public ApiResult<T> setData(T data) {
-        this.data = data;
-        return this;
-    }
-
 
     @Override
     public String toString() {

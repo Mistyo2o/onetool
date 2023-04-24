@@ -80,7 +80,7 @@ public class QQMusicService {
      * @description: 获取用户歌单列表 并保存
      */
     @Transactional
-    public ApiResult<String> spiderSongPlay(String qq) {
+    public ApiResult spiderSongPlay(String qq) {
         //请求参数
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         long r = Calendar.getInstance().getTimeInMillis();
@@ -119,7 +119,7 @@ public class QQMusicService {
         }
         //保存新数据
         batchInset(getBatchInsetPlaySql(disslist, qq));
-        return ResponseData.success(ApiResultCode.UPDATA_PLAYLIST_SUCCESS.code, ApiResultCode.UPDATA_PLAYLIST_SUCCESS.message);
+        return ResponseData.success();
     }
 
     /**
@@ -129,7 +129,7 @@ public class QQMusicService {
      * @description: 获取歌单中歌曲数据 并保存
      */
     @Transactional
-    public ApiResult<String> spiderSong(String qq) throws Exception {
+    public ApiResult spiderSong(String qq) throws Exception {
         //根据qq 查询歌单
         List<PlayList> byCUserAndDel = playListRepository.findBycUserAndDel(qq, 0);
         long l = System.currentTimeMillis();

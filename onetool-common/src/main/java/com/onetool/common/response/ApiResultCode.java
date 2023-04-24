@@ -3,7 +3,7 @@ package com.onetool.common.response;
 /**
  * @author: zh
  * @date: 2023/3/26 23:37
- * @description:
+ * @description: 响应数据枚举
  */
 public enum ApiResultCode {
 

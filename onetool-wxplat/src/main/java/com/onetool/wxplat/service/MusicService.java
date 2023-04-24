@@ -33,7 +33,7 @@ public class MusicService {
      * @date: 2023/4/14 15:33
      * @description: 根据qq查询歌单列表
      */
-    public ApiResult<List<Play>> playList(String qq) {
+    public ApiResult playList(String qq) {
         List<Play> byCUserAndDel = playRepository.findBycUserAndDel(qq, 0);
         return ResponseData.success(byCUserAndDel);
     }
@@ -45,7 +45,7 @@ public class MusicService {
      * @date: 2023/4/16 17:21
      * @description: 根据歌单id 查询歌曲列表
      */
-    public ApiResult<List<Song>> songList(String playId) {
+    public ApiResult songList(String playId) {
         List<Song> byPlayId = songRepository.findByPlayId(playId);
         return ResponseData.success(byPlayId);
     }
