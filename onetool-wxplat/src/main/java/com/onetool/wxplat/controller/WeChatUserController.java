@@ -27,10 +27,16 @@ public class WeChatUserController {
     }
 
 
-    @GetMapping("/getInfo/{code}")
+    @GetMapping("/getOpenId/{code}")
     @ResponseBody
-    public ApiResult getInfo(@PathVariable("code") String code) {
-        return weChatUserService.getWeChatUserInfoByCode(code);
+    public ApiResult getOpenId(@PathVariable("code") String code) {
+        return weChatUserService.getOpenIdByLoginCode(code);
+    }
+
+    @GetMapping("/getInfo/{openId}")
+    @ResponseBody
+    public ApiResult getInfo(@PathVariable("openId") String openId) {
+        return weChatUserService.getUserInfoByOpenId(openId);
     }
 
     @GetMapping("/getQq/{openId}")
