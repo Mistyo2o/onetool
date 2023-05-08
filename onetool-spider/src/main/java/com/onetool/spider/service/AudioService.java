@@ -34,6 +34,8 @@ public class AudioService {
     private String ytDlpOutPath;
     @Value("${ytdlp.musicPath}")
     private String musicPath;
+    @Value("${minio.url}")
+    private String minioUrl;
     @Autowired
     private YouTubeDataApiService youTubeDataApiService;
     @Autowired
@@ -69,9 +71,10 @@ public class AudioService {
 //        }
         //下载完成之后 上传文件至minio
         //minIoFileService.upload();
-        //获取文件预览地址 更新数据
+        //设置文件预览地址 更新数据
         for (Song song : songList) {
-            String previewUrl = minIoFileService.getFilePreviewUrl("music", song.getName() + song.getAuthor() + ".mp3");
+            String previewUrl = minioUrl + "/music/" +song.getName() + song.getAuthor() + ".mp3";
+           // String previewUrl = minIoFileService.getFilePreviewUrl("music", song.getName() + song.getAuthor() + ".mp3");
             song.setPreviewUrl(previewUrl);
             songRepository.save(song);
         }

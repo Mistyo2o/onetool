@@ -17,18 +17,25 @@ public class WeChatUserQq {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //自增
-    private String id;
+    private Long id;
 
     /**
      * 微信用户openid
      */
+    @Column(name = "open_id")
     private String openId;
-    /**
-     * qq号
-     */
-    private String qq;
     /**
      * 是否选中当前账号 0否1是
      */
-    private int option;
+    @Column(name = "def")
+    private int def;
+    /**
+     * qq号
+     */
+    @Column(name = "qq")
+    private String qq;
+
+
+    @Column(name = "name")
+    private String name;
 }

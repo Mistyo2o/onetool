@@ -2,6 +2,7 @@ package com.onetool.wxplat.controller;
 
 import com.onetool.common.response.ApiResult;
 import com.onetool.wxplat.entity.WeChatUserInfo;
+import com.onetool.wxplat.entity.WeChatUserQq;
 import com.onetool.wxplat.service.WeChatUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,9 +27,28 @@ public class WeChatUserController {
     }
 
 
-    @GetMapping("/getInfo/{openId}")
+    @GetMapping("/getInfo/{code}")
     @ResponseBody
-    public ApiResult getInfo(@PathVariable("openId") String openId) {
-        return weChatUserService.getWeChatUserInfoByOpenId(openId);
+    public ApiResult getInfo(@PathVariable("code") String code) {
+        return weChatUserService.getWeChatUserInfoByCode(code);
+    }
+
+    @GetMapping("/getQq/{openId}")
+    @ResponseBody
+    public ApiResult getQq(@PathVariable("openId") String openId) {
+        return weChatUserService.getWeChatUserQqByOpenId(openId);
+    }
+
+
+    @PostMapping("saveUserQq")
+    @ResponseBody
+    public ApiResult saveUserQq(@RequestBody WeChatUserQq weChatUserQq){
+        return weChatUserService.saveWeChatUserQq(weChatUserQq);
+    }
+
+    @GetMapping("/uDef/{qq}")
+    @ResponseBody
+    public ApiResult updateQqDef(@PathVariable("qq") String qq){
+        return weChatUserService.updateQqDet(qq);
     }
 }

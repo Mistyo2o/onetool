@@ -18,8 +18,12 @@ public class ResponseData {
     }
 
 
-    public static  ApiResult success() {
+    public static ApiResult success() {
         return new ApiResult(ApiResultCode.SUCCESS.getCode(), ApiResultCode.SUCCESS.getMessage(), null);
+    }
+
+    public static ApiResult error(String msg) {
+        return new ApiResult(ApiResultCode.UPDATA_ERROR.getCode(), msg, null);
     }
 
 //    public static ApiResult success() {
